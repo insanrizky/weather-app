@@ -18,7 +18,7 @@ class Now extends Component {
                             <div className="">
                                 <h6>{ dateFormatFull(bindToElement(data.current, 'last_updated')) }</h6>
                                 <h5>{ bindToElement(data.location, 'name') }, { bindToElement(data.location, 'country') }</h5>
-                                <h4>{ bindToElement(data.current, 'temp_c') } &#8451; / { bindToElement(data.current, 'temp_f') } &#8457;</h4>
+                                <h4>{ bindToElement(data.current, 'feelslike_c') }&#8451; / { bindToElement(data.current, 'feelslike_f') }&#8457;</h4>
                             </div>
                         </div>
                     </div>
