@@ -22,9 +22,16 @@ nav {
             background: $oceanDark;
         }
     }
+    .navbar-brand {
+        img {
+            width: 30px;
+            vertical-align: middle;
+        }
+    }
 }
 
 .card {
+    border-top: solid 5px $oceanDark;
     border-radius: 8px !important;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, .15);
 }
@@ -77,4 +84,10 @@ nav {
         display: block;
         background: rgba(0, 0, 0, 0.3)
     }
+}
+
+.footer {
+    text-align: center;
+    padding: 15px 0;
+    border-top: $grey solid 1px;
 }

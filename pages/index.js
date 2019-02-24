@@ -2,17 +2,31 @@ import React, { Component } from 'react';
 import Head from '../components/layouts/head';
 import Nav from '../components/layouts/nav';
 import Main from '../components/main';
+import Foot from '../components/layouts/foot';
 import '../assets/scss/styles.scss';
 
 import { connect } from 'react-redux'
 import { getCurrentWeather, getWeatherHistory, getWeatherForecast } from '../stores/actions/weather'
+import { errorNotif, loader } from '../utils/notification';
 
 class Home extends Component {
     componentDidMount() {
+        this.initData();
+    }
+
+    initData = () => {
         const { dispatch } = this.props;
-        getCurrentWeather(dispatch);
-        getWeatherHistory(dispatch, {});
-        getWeatherForecast(dispatch, {});
+        loader();
+        try {
+            getCurrentWeather(dispatch);
+            getWeatherHistory(dispatch, {});
+            getWeatherForecast(dispatch, {});
+            setTimeout(() => {
+                swal.close();
+            }, 2000);
+        } catch (err) {
+            errorNotif(err);
+        }
     }
 
     render() {
@@ -21,6 +35,7 @@ class Home extends Component {
               <Head/>
               <Nav/>
               <Main/>
+              <Foot/>
             </div>
         )
     }

@@ -23,9 +23,6 @@ class Now extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="text-right">
-                    <small><i>Powered by: <a href="https://www.apixu.com">APIXU</a></i></small>
-                </div>
             </div>
         )
     }

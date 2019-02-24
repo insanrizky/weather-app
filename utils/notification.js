@@ -4,8 +4,8 @@ export const loader = (bool = true) => {
     if (bool) {
         swal({
             icon: '/static/img/Spin-1s-149px.gif',
-            title: 'Mohon Menunggu',
-            text: 'sedang berinteraksi dengan server...',
+            title: 'Please wait',
+            text: 'fetching data from server...',
             buttons: false, 
             allowOutsideClick: false,
             closeOnEsc: false,
