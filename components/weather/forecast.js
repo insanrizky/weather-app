@@ -1,8 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { dateFormatFull } from '../../utils/helper';
-
+import ModalForecast from '../modals/forecast';
 class Forecast extends Component {
+    state = {
+        modalOpen: false,
+        modalData: {}
+    }
+
+    openDetail = (data) => {
+        this.setState({
+            modalOpen: true,
+            modalData: data
+        })
+    }
+
+    closeModal = () => {
+        this.setState({
+            modalOpen: false,
+            modalData: {}
+        })
+    }
+
     renderForecastWeather = () => {
         let el = [];
         const forecastday = this.props.data && this.props.data.forecast && this.props.data.forecast.forecastday;
@@ -14,7 +33,7 @@ class Forecast extends Component {
                         <div><small>{ f.day.condition.text }</small></div>
                         <p>{ dateFormatFull(f.date) }</p>
                     </div>
-                    <div className="card-footer">See Details <span className="fa fa-chevron-right"></span></div>
+                    <div onClick={() => this.openDetail(f)} className="card-footer">See Details <span className="fa fa-chevron-right"></span></div>
                 </div>)
             })
         }
@@ -29,6 +48,12 @@ class Forecast extends Component {
                         { this.renderForecastWeather() }
                     </div>
                 </div>
+
+                <ModalForecast
+                    isOpen={this.state.modalOpen}
+                    data={this.state.modalData}
+                    closeModal={this.closeModal}
+                    />
             </div>
         )
     }

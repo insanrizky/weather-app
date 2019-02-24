@@ -44,6 +44,15 @@ nav {
         border-radius: 5px;
         padding: 5px;
         margin: 0 10px;
+        &--nomargin {
+            border: 1px $grey solid;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 0;
+            .table {
+                font-size: 14px;
+            }
+        }
         .card-footer {
             padding: 5px 7px;
             background: $oceanDark;
@@ -60,5 +69,12 @@ nav {
         &--150 {
             min-height: 150px;
         }
+    }
+}
+
+.modal {
+    &--darken {
+        display: block;
+        background: rgba(0, 0, 0, 0.3)
     }
 }
