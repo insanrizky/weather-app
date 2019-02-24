@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import Head from '../components/layouts/head';
 import Nav from '../components/layouts/nav';
-import Main from '../components/main';
 import '../assets/scss/styles.scss';
 
-class Home extends Component {
+class News extends Component {
     render() {
         return (
             <div>
               <Head/>
               <Nav/>
-              <Main/>
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-12">
+                    <h1>News</h1>
+                  </div>
+                </div>
+              </div>
             </div>
         )
     }
 }
 
-export default Home;
+export default News;

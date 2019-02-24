@@ -3,5 +3,54 @@
 body {
     font-family: sans-serif;
     background: $ocean;
-    color: $white;
+}
+
+.m {
+    &-50 {
+        margin: 50px 0;
+    }
+    &-b {
+        &-20 {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+nav {
+    &.bg {
+        &-ocean-dark {
+            background: $oceanDark;
+        }
+    }
+}
+
+.card {
+    border-radius: 8px !important;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .15);
+}
+
+.weather {
+    &__icon {
+        width: 75px;
+        &--small {
+            width: 50px;
+        }
+        &--big {
+            width: 100px;
+        }
+    }
+    &__day {
+        border: 1px $grey solid;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 0 10px;
+        .card-footer {
+            padding: 5px 7px;
+            background: $oceanDark;
+            color: $white;
+            font-size: 12px;
+            text-align: center;
+            cursor: pointer;
+        }
+    }
 }
