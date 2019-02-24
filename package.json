@@ -1,10 +1,28 @@
 {
-  "name": "create-next-example-app",
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "Weather App",
+  "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
     "build": "next build",
     "start": "next start"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/insanrizky/weather-app.git"
+  },
+  "keywords": [
+    "weather",
+    "app"
+  ],
+  "author": "insanrizky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/insanrizky/weather-app/issues"
+  },
+  "homepage": "https://github.com/insanrizky/weather-app#readme",
   "dependencies": {
     "next": "^8.0.3",
     "react": "^16.8.3",
