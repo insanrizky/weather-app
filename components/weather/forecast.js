@@ -1,52 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { dateFormatFull } from '../../utils/helper';
 
 class Forecast extends Component {
+    renderForecastWeather = () => {
+        let el = [];
+        const forecastday = this.props.data && this.props.data.forecast && this.props.data.forecast.forecastday;
+        if (forecastday && forecastday.length) {
+            el = forecastday.map((f, idx) => {
+                return (<div key={idx} className="col weather__day">
+                    <div className="text-center min__h--150">
+                        <img src={ f.day.condition.icon } className="weather__icon"/>
+                        <div><small>{ f.day.condition.text }</small></div>
+                        <p>{ dateFormatFull(f.date) }</p>
+                    </div>
+                    <div className="card-footer">See Details <span className="fa fa-chevron-right"></span></div>
+                </div>)
+            })
+        }
+        return el;
+    }
     render() {
         return (
             <div className="card m-b-20">
                 <div className="card-body">
-                    <h5 className="card-title">Timeline Weather</h5>
+                    <h5 className="card-title">Weather Forecast</h5><hr/>
                     <div className="row">
-                        <div className="col weather__day">
-                            <div className="text-center">
-                                <img src="/static/weather/64x64/day/113.png" className="weather__icon"/>
-                                <div><small>Patchy rain possible</small></div>
-                                <p>Mon, Feb 22</p>
-                            </div>
-                            <div className="card-footer">See Details <span className="fa fa-chevron-right"></span></div>
-                        </div>
-                        <div className="col weather__day">
-                            <div className="text-center">
-                                <img src="/static/weather/64x64/day/113.png" className="weather__icon"/>
-                                <div><small>Patchy rain possible</small></div>
-                                <p>Mon, Feb 23</p>
-                            </div>
-                            <div className="card-footer">See Details <span className="fa fa-chevron-right"></span></div>
-                        </div>
-                        <div className="col weather__day">
-                            <div className="text-center">
-                                <img src="/static/weather/64x64/day/113.png" className="weather__icon"/>
-                                <div><small>Patchy rain possible</small></div>
-                                <p>Mon, Feb 24</p>
-                            </div>
-                            <div className="card-footer">See Details <span className="fa fa-chevron-right"></span></div>
-                        </div>
-                        <div className="col weather__day">
-                            <div className="text-center">
-                                <img src="/static/weather/64x64/day/113.png" className="weather__icon"/>
-                                <div><small>Patchy rain possible</small></div>
-                                <p>Mon, Feb 25</p>
-                            </div>
-                            <div className="card-footer">See Details <span className="fa fa-chevron-right"></span></div>
-                        </div>
-                        <div className="col weather__day">
-                            <div className="text-center">
-                                <img src="/static/weather/64x64/day/113.png" className="weather__icon"/>
-                                <div><small>Patchy rain possible</small></div>
-                                <p>Mon, Feb 26</p>
-                            </div>
-                            <div className="card-footer">See Details <span className="fa fa-chevron-right"></span></div>
-                        </div>
+                        { this.renderForecastWeather() }
                     </div>
                 </div>
             </div>
@@ -54,4 +34,9 @@ class Forecast extends Component {
     }
 }
 
-export default Forecast;
+const mapStateToProps = state => {
+    const data = state.weather.forecast;
+    return { data };
+}
+
+export default connect(mapStateToProps)(Forecast);

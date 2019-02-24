@@ -1,31 +1,39 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindToElement, dateFormatFull} from '../../utils/helper';
 
 class Now extends Component {
     render() {
+        const { data } = this.props;
         return (
             <div>
                 <div className="card">
                     <div className="card-body">
                         <div className="">
                             <div className="text-center">
-                                <img src="/static/weather/64x64/day/113.png" className="weather__icon--big"/>
-                                <p>Sky is clear</p>
+                                <img src={ bindToElement(data.current, 'condition.icon') } className="weather__icon--big"/>
+                                <p>{ bindToElement(data.current, 'condition.text') }</p>
                             </div>
                             <hr/>
                             <div className="">
-                                <h5>Jakarta</h5>
-                                <span>Wednesday, February 24</span>
-                                <h3>30 C</h3>
+                                <h6>{ dateFormatFull(bindToElement(data.current, 'last_updated')) }</h6>
+                                <h5>{ bindToElement(data.location, 'name') }, { bindToElement(data.location, 'country') }</h5>
+                                <h4>{ bindToElement(data.current, 'temp_c') } &#8451; / { bindToElement(data.current, 'temp_f') } &#8457;</h4>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="text-right">
-                    <small><i>Powered by: <a href="https://www.apixu.com">APIXIU</a></i></small>
+                    <small><i>Powered by: <a href="https://www.apixu.com">APIXU</a></i></small>
                 </div>
             </div>
         )
     }
 }
 
-export default Now;
+const mapStateToProps = state => {
+    const data = state.weather.current;
+    return { data };
+}
+
+export default connect(mapStateToProps)(Now);
