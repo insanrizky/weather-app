@@ -1,15 +1,22 @@
 const data = {
-  name: 'foo',
+  current: {},
+  forecast: {},
+  history: {}
 }
 
 export const weatherTypes = {
-  TICK: 'TICK',
+  CURRENT: 'CURRENT',
+  FORECAST: 'FORECAST',
+  HISTORY: 'HISTORY',
 }
 
 export const weather = (state = data, action) => {
   switch (action.type) {
-    case weatherTypes.TICK:
-      return state
+    case weatherTypes.CURRENT:
+      return {
+        ...state,
+        current: action.payload
+      }
     default:
       return state
   }

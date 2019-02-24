@@ -5,14 +5,13 @@ import Main from '../components/main';
 import '../assets/scss/styles.scss';
 
 import { connect } from 'react-redux'
-import { getWeatherByLocation } from '../stores/actions/weather'
+import { getCurrentWeather } from '../stores/actions/weather'
 
 class Home extends Component {
     componentDidMount() {
-        getWeatherByLocation(this.props.dispatch);
+        getCurrentWeather(this.props.dispatch);
     }
     render() {
-        console.log(this.props.weather);
         return (
             <div>
               <Head/>
@@ -22,7 +21,6 @@ class Home extends Component {
         )
     }
 }
-
 
 const mapStateToProps = state => {
     const weather = state.weather;
